@@ -33,7 +33,7 @@ export class LoginService {
   }
 
   logIn(user: string, pass: string) {
-    let url = `/api/login`;
+    let url = `http://localhost:8443/api/login`;
     return this.http.post(
       url,
       { username: user, password: pass },
