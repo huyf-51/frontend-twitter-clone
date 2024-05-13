@@ -13,12 +13,7 @@ export class TweetService {
 
   getRepliesOfATweet(tweetId: number, from: number, size: number) {
     let url =
-      `${environment.apiEndPoint}/api/tweets/` +
-      tweetId +
-      '/comments?from=' +
-      from +
-      '&size=' +
-      size;
+      `/api/tweets/` + tweetId + '/comments?from=' + from + '&size=' + size;
     return this.httpClient
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
@@ -27,13 +22,7 @@ export class TweetService {
   }
 
   getTweetsOfAUser(userId, from, size): Observable<TweetInformation[]> {
-    let url =
-      `${environment.apiEndPoint}/api/users/` +
-      userId +
-      '/tweets?from=' +
-      from +
-      '&size=' +
-      size;
+    let url = `/api/users/` + userId + '/tweets?from=' + from + '&size=' + size;
     return this.httpClient
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
@@ -42,8 +31,7 @@ export class TweetService {
   }
 
   getBookmarksOfCurrentUser(from, size): Observable<TweetInformation[]> {
-    let url =
-      `${environment.apiEndPoint}/api/bookmarks?from=` + from + '&size=' + size;
+    let url = `/api/bookmarks?from=` + from + '&size=' + size;
     return this.httpClient
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
@@ -53,12 +41,7 @@ export class TweetService {
 
   getTweetsOfAHashtag(hashtag, from, size): Observable<TweetInformation[]> {
     let url =
-      `${environment.apiEndPoint}/api/hashtag/` +
-      hashtag +
-      '/tweets?from=' +
-      from +
-      '&size=' +
-      size;
+      `/api/hashtag/` + hashtag + '/tweets?from=' + from + '&size=' + size;
     return this.httpClient
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
@@ -67,8 +50,7 @@ export class TweetService {
   }
 
   getTweetsForCurrentUser(from, size): Observable<TweetInformation[]> {
-    let url =
-      `${environment.apiEndPoint}/api/tweets?from=` + from + '&size=' + size;
+    let url = `/api/tweets?from=` + from + '&size=' + size;
     return this.httpClient
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
@@ -77,7 +59,7 @@ export class TweetService {
   }
 
   toggleBookmark(id) {
-    let url = `${environment.apiEndPoint}/api/tweets/` + id + '/bookmarks';
+    let url = `/api/tweets/` + id + '/bookmarks';
     return this.httpClient
       .put(url, '')
       .pipe(
@@ -86,7 +68,7 @@ export class TweetService {
   }
 
   toggleLike(id) {
-    let url = `${environment.apiEndPoint}/api/tweets/` + id + '/likes';
+    let url = `/api/tweets/` + id + '/likes';
     return this.httpClient
       .put(url, '')
       .pipe(
@@ -95,7 +77,7 @@ export class TweetService {
   }
 
   toggleRetweet(id) {
-    let url = `${environment.apiEndPoint}/api/tweets/` + id + '/retweets';
+    let url = `/api/tweets/` + id + '/retweets';
     return this.httpClient
       .put(url, '')
       .pipe(
@@ -104,7 +86,7 @@ export class TweetService {
   }
 
   deleteTweet(id) {
-    let url = `${environment.apiEndPoint}/api/tweets/` + id;
+    let url = `/api/tweets/` + id;
     return this.httpClient
       .delete(url)
       .pipe(
@@ -113,7 +95,7 @@ export class TweetService {
   }
 
   getTweet(id) {
-    let url = `${environment.apiEndPoint}/api/tweets/` + id;
+    let url = `/api/tweets/` + id;
     return this.httpClient
       .get(url)
       .pipe(
@@ -122,7 +104,7 @@ export class TweetService {
   }
 
   postTweet(text) {
-    let url = `${environment.apiEndPoint}/api/tweets/`;
+    let url = `/api/tweets/`;
     let object = { text: text };
     let httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -135,7 +117,7 @@ export class TweetService {
   }
 
   postComment(text, id) {
-    let url = `${environment.apiEndPoint}/api/tweets/` + id + '/comments';
+    let url = `/api/tweets/` + id + '/comments';
     let object = { text: text };
     let httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -148,7 +130,7 @@ export class TweetService {
   }
 
   postImages(files, id) {
-    let url = `${environment.apiEndPoint}/api/tweets/` + id + '/images';
+    let url = `/api/tweets/` + id + '/images';
 
     let formData = new FormData();
     for (let i = 0; i < files.length; i++) {

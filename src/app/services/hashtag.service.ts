@@ -13,8 +13,7 @@ export class HashtagService {
   constructor(private http: HttpClient) {}
 
   getSomeTrends(offset: number, size: number): Observable<Trend[]> {
-    let url =
-      `${environment.apiEndPoint}/api/trends?from=` + offset + '&size=' + size;
+    let url = `/api/trends?from=` + offset + '&size=' + size;
     return this.http
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<

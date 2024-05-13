@@ -9,7 +9,7 @@ export class Signup {
   constructor(private http: HttpClient, private service: UserService) {}
 
   signUp(user: string, pass: string, mail: string): Observable<Response> {
-    let url = `${environment.apiEndPoint}/api/signup`;
+    let url = `/api/signup`;
     return this.http
       .post(
         url,
@@ -22,7 +22,7 @@ export class Signup {
   }
 
   verify(code: string): Observable<Response> {
-    let url = `${environment.apiEndPoint}/api/verification?code=` + code;
+    let url = `/api/verification?code=` + code;
     return this.http
       .get(url, { observe: 'response' })
       .pipe(

@@ -11,11 +11,7 @@ export class NotificationService {
   constructor(private httpClient: HttpClient) {}
 
   getSomeNotifications(from: number, size: number): Observable<Notification[]> {
-    let url =
-      `${environment.apiEndPoint}/api/notifications?from=` +
-      from +
-      '&size=' +
-      size;
+    let url = `/api/notifications?from=` + from + '&size=' + size;
     return this.httpClient
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
@@ -24,8 +20,7 @@ export class NotificationService {
   }
 
   getSomeMentions(from: number, size: number): Observable<Notification[]> {
-    let url =
-      `${environment.apiEndPoint}/api/mentions?from=` + from + '&size=' + size;
+    let url = `/api/mentions?from=` + from + '&size=' + size;
     return this.httpClient
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<

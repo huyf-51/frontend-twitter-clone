@@ -18,7 +18,7 @@ export class LoginService {
   }
 
   reqIsLogged() {
-    let url = `${environment.apiEndPoint}/api/users/me`;
+    let url = `/api/users/me`;
     this.http.get(url, { withCredentials: true }).subscribe(
       (response) => {
         this.currentUser = response as UserInformation;
@@ -33,7 +33,7 @@ export class LoginService {
   }
 
   logIn(user: string, pass: string) {
-    let url = `${environment.apiEndPoint}/api/login`;
+    let url = `/api/login`;
     return this.http.post(
       url,
       { username: user, password: pass },
@@ -42,7 +42,7 @@ export class LoginService {
   }
 
   logOut() {
-    let url = `${environment.apiEndPoint}/api/logout`;
+    let url = `/api/logout`;
     return this.http
       .post(url, { withCredentials: true })
       .subscribe((resp: any) => {

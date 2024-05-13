@@ -16,8 +16,7 @@ export default class SearchService {
   ) {}
 
   searchProfiles(keyword: string): Observable<UserInformation[]> {
-    let url =
-      `${environment.apiEndPoint}/api/users/` + keyword + '/found-users';
+    let url = `/api/users/` + keyword + '/found-users';
     return this.http
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
@@ -26,8 +25,7 @@ export default class SearchService {
   }
 
   searchHashtags(keyword: string): Observable<Trend[]> {
-    let url =
-      `${environment.apiEndPoint}/api/hashtags/` + keyword + '/found-hashtags';
+    let url = `/api/hashtags/` + keyword + '/found-hashtags';
     return this.http
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
