@@ -11,7 +11,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUser(username: string): Observable<UserInformation> {
-    let url = `/api/users/` + username;
+    let url = `http://localhost:8443/api/users/` + username;
     return this.http
       .get(url)
       .pipe(
@@ -20,7 +20,7 @@ export class UserService {
   }
 
   getCurrentUser(): Observable<UserInformation> {
-    let url = `/api/users/me`;
+    let url = `http://localhost:8443/api/users/me`;
     return this.http
       .get(url)
       .pipe(
@@ -29,7 +29,8 @@ export class UserService {
   }
 
   getFollowedUser(username1: string, username2: string): Observable<boolean> {
-    let url = `/api/users/` + username1 + '/followed/' + username2;
+    let url =
+      `http://localhost:8443/api/users/` + username1 + '/followed/' + username2;
     return this.http
       .get(url)
       .pipe(
@@ -38,7 +39,10 @@ export class UserService {
   }
 
   getFollowed(username: string): Observable<UserInformation[]> {
-    let url = `/api/users/` + username + '/followed?from=0&size=10';
+    let url =
+      `http://localhost:8443/api/users/` +
+      username +
+      '/followed?from=0&size=10';
     return this.http
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
@@ -47,7 +51,10 @@ export class UserService {
   }
 
   getFollowers(username: string): Observable<UserInformation[]> {
-    let url = `/api/users/` + username + '/followers?from=0&size=10';
+    let url =
+      `http://localhost:8443/api/users/` +
+      username +
+      '/followers?from=0&size=10';
     return this.http
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
@@ -56,7 +63,7 @@ export class UserService {
   }
 
   putBannerPic(file: any, id: number) {
-    let url = `/api/users/` + id + '/banner-image';
+    let url = `http://localhost:8443/api/users/` + id + '/banner-image';
     let formData = new FormData();
     formData.append('file', file, file.name);
     let headers = new HttpHeaders();
@@ -68,7 +75,7 @@ export class UserService {
   }
 
   putProfilePic(file: any, id: number) {
-    let url = `/api/users/` + id + '/user-image';
+    let url = `http://localhost:8443/api/users/` + id + '/user-image';
     let formData = new FormData();
     formData.append('file', file, file.name);
     let headers = new HttpHeaders();
@@ -80,21 +87,21 @@ export class UserService {
   }
 
   putNickname(nickname: string, id: number) {
-    let url = `/api/users/` + id + '/nickname';
+    let url = `http://localhost:8443/api/users/` + id + '/nickname';
     return this.http
       .put(url, { text: nickname })
       .pipe(catchError((error) => this.handleError(error)));
   }
 
   putBiography(biography: string, id: number) {
-    let url = `/api/users/` + id + '/biography';
+    let url = `http://localhost:8443/api/users/` + id + '/biography';
     return this.http
       .put(url, { text: biography })
       .pipe(catchError((error) => this.handleError(error)));
   }
 
   getStatistics(): Observable<object> {
-    let url = `/api/users/statistics`;
+    let url = `http://localhost:8443/api/users/statistics`;
     return this.http
       .get(url)
       .pipe(
@@ -103,7 +110,7 @@ export class UserService {
   }
 
   getUsersToVerify(): Observable<UserInformation[]> {
-    let url = `/api/users-to-verify`;
+    let url = `http://localhost:8443/api/users-to-verify`;
     return this.http
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
@@ -112,7 +119,7 @@ export class UserService {
   }
 
   getVerificatedUsers(): Observable<UserInformation[]> {
-    let url = `/api/verificated-users`;
+    let url = `http://localhost:8443/api/verificated-users`;
     return this.http
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
@@ -121,7 +128,7 @@ export class UserService {
   }
 
   getBannedUsers(): Observable<UserInformation[]> {
-    let url = `/api/banned-users`;
+    let url = `http://localhost:8443/api/banned-users`;
     return this.http
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
@@ -130,42 +137,42 @@ export class UserService {
   }
 
   verifyUser(id: number) {
-    let url = `/api/users/` + id + '?type=VERIFY';
+    let url = `http://localhost:8443/api/users/` + id + '?type=VERIFY';
     return this.http
       .put(url, null)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
   unverifyUser(id: number) {
-    let url = `/api/users/` + id + '?type=UNVERIFY';
+    let url = `http://localhost:8443/api/users/` + id + '?type=UNVERIFY';
     return this.http
       .put(url, null)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
   banUser(id: number) {
-    let url = `/api/users/` + id + '?type=BAN';
+    let url = `http://localhost:8443/api/users/` + id + '?type=BAN';
     return this.http
       .put(url, null)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
   unbannedUser(id: number) {
-    let url = `/api/users/` + id + '?type=UNBAN';
+    let url = `http://localhost:8443/api/users/` + id + '?type=UNBAN';
     return this.http
       .put(url, null)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
   toggleFollow(id: number) {
-    let url = `/api/users/` + id + '/followers';
+    let url = `http://localhost:8443/api/users/` + id + '/followers';
     return this.http
       .put(url, null)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
   getRecommendedUsers(): Observable<UserInformation[]> {
-    let url = `/api/recommended-users`;
+    let url = `http://localhost:8443/api/recommended-users`;
     return this.http
       .get(url)
       .pipe(catchError((error) => this.handleError(error))) as Observable<
